@@ -1,4 +1,4 @@
-# Deliverable 1
+# Deliverable 1:
 
 # Load the dplyr package.
 install.packages("dplyr")
@@ -12,3 +12,14 @@ lm(mpg ~ vehicle_length+vehicle_weight+spoiler_angle+ground_clearance+AWD,MechaC
 
 # USing summary() function find the p-value and r-squared value.
 summary(lm(mpg ~ vehicle_length+vehicle_weight+spoiler_angle+ground_clearance+AWD,MechaCar)) 
+
+# Deliverable 2:
+
+# Import the csv file.
+Suspension_Coil <- read.csv(file='Suspension_Coil.csv',check.names=F,stringsAsFactors = F)
+
+# Create a total_summary dataframe.
+total_summary <- Suspension_Coil %>% summarize(Mean=mean(PSI),Median=median(PSI),Variance=var(PSI),SD=sd(PSI),.groups = 'keep')
+
+# Create a lot_summary dataframe.
+lot_summary <- Suspension_Coil %>% group_by(Manufacturing_Lot) %>% summarize(Mean=mean(PSI),Median=median(PSI),Variance=var(PSI),SD=sd(PSI),.groups = 'keep')
